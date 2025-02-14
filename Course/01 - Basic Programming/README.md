@@ -331,3 +331,164 @@ nilai counter dengan bilangan genap:  10
 Sudah di luar kondisi for.
 */
 ```
+
+# Pengarsipan Versi Perangkat Lunak
+
+**Pengarsipan** merupakan sebuah proses, cara, atau perbuatan mengarsipkan, sedangkan **arsip** adalah tempat penyimpanan berkas (program atau data) sebagai cadangan.
+
+Aplikasi pengarsipan perangkat lunak dinamakan VCS atau Version Control System. Version Control System merupakan tools untuk mengatur suatu perubahan yang dilakukan akan dicatat, sehingga memperjelas siapa yang telah melakukan perubahan tersebut. Selain itu, version control juga berfungsi sebagai backup files atau pengarsipan.
+
+Perusahaan besar di dunia telah menggunakannya untuk mengelola produk atau aplikasi mereka. Contohnya Facebook menggunakan Mercurial dan Twitter menggunakan Git.
+
+## Codelab
+
+#### Kasus Pertama, Variable Tidak Memiliki Makna
+
+Perhatikan kode anggota tim baru Anda ketika menuliskan nama variabel berikut:
+
+```javascript
+let d; // waktu yang berlalu dalam hari (elapsed time in days)
+```
+
+Bukankah lebih baik jika kita secara eksplisit menuliskannya seperti ini?
+
+```javascript
+let elapsedTimeInDays;
+```
+
+_Notes :_ Gunakan Bahasa Inggris dalam konteks programming. Karena Bahasa Inggris adalah lingua fraca dalam konteks internasional. Dan pastinya dari kebiasaan tersebut membangun diri menjadi lebih baik dan dapat mudah dimengerti oleh developer dari belahan dunia manapun.
+
+#### Kasus Kedua, Variabel Susah untuk Diucapkan
+
+Anda menelusuri kembali perubahan yang dilakukan oleh anggota baru tersebut. Kali ini Anda menemukan suatu variabel yang susah untuk diucap dalam otak Anda.
+
+```javascript
+const yyyymmdd = moment().format("YYYY/MM/DD"); // Untuk mendapatkan waktu saat ini.
+```
+
+Bukankah lebih baik jika kita secara eksplisit menuliskannya seperti ini?
+
+```javascript
+const currentDate = moment().format("YYYY/MM/DD");
+```
+
+#### Kasus Ketiga, Variabel Susah untuk Dicari
+
+Anda makin bersemangat memeriksa perubahan kode tersebut. Kembali lagi Anda menemukan sesuatu yang susah diketahui.
+
+```javascript
+// Nilai apakah 86400000 ini?
+setTimeout(blastOff, 86400000);
+```
+
+Bukankah lebih baik jika kita secara eksplisit menuliskannya seperti ini?
+
+```javascript
+// Deklarasikan sebagai variabel konstanta (gunakan huruf kapital).
+const MILLISECONDS_IN_A_DAY = 86_400_000;
+setTimeout(blastOff, MILLISECONDS_IN_A_DAY);
+```
+
+#### Kasus Keempat, Hindari Penambahan Kata yang Tidak Perlu
+
+Walau eksplisit lebih baik daripada implisit, penting juga kita perhatikan kata yang digunakan. Hindari pemberian kata yang sebenarnya konteksnya sudah jelas. Ini sering terjadi ketika memberikan nama pada properti class/object.
+
+```javascript
+const Car = {
+  carMake: "Honda",
+  carModel: "Accord",
+  carColor: "Blue",
+};
+const paintCar = (car) => {
+  car.carColor = "Red";
+};
+```
+
+Penambahan kata ‘car’ pada tiap propertinya tidak berarti apapun. Ia hanya membuat redundansi kode saja karena sudah jelas properti tersebut berada di dalam objek Car.
+
+```javascript
+const Car = {
+  make: "Honda",
+  model: "Accord",
+  color: "Blue",
+};
+
+const paintCar = (car) => {
+  car.color = "Red";
+};
+```
+
+## Sintaksis dalam Komentar
+
+#### Beberapa simbol untuk komentar dalam beberapa bahasa pemrograman antara lain
+
+| Bahasa                         | Sintaksis Komentar  |
+| ------------------------------ | ------------------- |
+| C, C++, Java, JavaScript, PHP  | // (double slashes) |
+| Ruby, Python, Perl, UNIX Shell | # (hash sign)       |
+| mySQL                          | -- (double dashes)  |
+| Visual Basic                   | ' (apostrophe)      |
+
+#### Sintaksis yang digunakan untuk menuliskan block comment
+
+| Bahasa                                   | Sintaksis Komentar         |
+| ---------------------------------------- | -------------------------- |
+| C, C++, Java, dan banyak bahasa lainnya. | /_ . . . _/                |
+| Pascal                                   | (_ . . . _) atau { . . . } |
+| Forth                                    | ( . . . )                  |
+| HTML                                     | <!-- . . . -->             |
+
+#### Tidak Semua Kode Perlu Komentar
+
+```python
+// Menampilkan pesan “Selamat, Anda telah menyelesaikan Level 1”
+print("Selamat, Anda telah menyelesaikan Level 1");
+```
+
+#### Multi Baris atau Blok Komentar
+
+```python
+// Komentar pertama
+// Komentar kedua
+……… Baris kode …………..
+```
+
+#### Menonaktifkan Statement yang Tidak Perlu
+
+```python
+print("Congratulations, You Win.");
+// playSound("orchestra.mp3");
+player.saveScore();
+```
+
+## Jenis dan Area Dokumentasi Teknis Sesuai Kebutuhan
+
+- End-user support
+
+  Dokumen yang mendukung pengguna terkait produk Anda.
+
+- Marketing support
+
+  Dokumen yang fokus pada produk dan digunakan untuk memasarkan perusahaan Anda.
+
+- Development support
+
+  Dokumen yang berisi spesifikasi teknis dan fungsional, panduan pengembangan perangkat lunak, glosarium, atau prosedur serta tools yang membantu tim dalam melakukan pekerjaan.
+
+- Organization support
+
+  Dokumen ini berisi segala informasi mengenai perusahaan yang perlu diketahui karyawan untuk melakukan pekerjaan.
+
+#### Manfaat Dokumentasi Teknis
+
+- Meningkatkan retensi pengguna.
+- Menghemat waktu dan tenaga.
+- Berpotensi untuk meningkatkan penjualan produk.
+
+#### Cara Membuat Dokumentasi Teknis
+
+- Tentukan target (rekan tim atau pengguna aplikasi).
+- Pikirkan apa yang harus disampaikan.
+- Gunakan outline atau kerangka tulisan sebelum memulai.
+- Gunakan ilustrasi dan teks.
+- Jika dokumentasi teknis selesai, baca kembali dan lakukan revisi bila yang kurang sesuai.
