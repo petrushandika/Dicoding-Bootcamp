@@ -141,3 +141,103 @@ Tujuan Infrastruktur :
 - Keamanan Data
 
   Infrastruktur data menyediakan fitur dan protokol keamanan untuk melindungi data sensitif dari akses yang tidak sah, pencurian, atau penyalahgunaan.
+
+## Pengenalan Machine Learning
+
+Machine learning menggunakan algoritma untuk menganalisis data dalam jumlah yang besar, belajar dari pengetahuan yang ada pada data, dan akhirnya memberikan keputusan berdasarkan pengalaman yang dimilikinya.
+
+### Traditional Programming vs Machine Learning
+
+Machine learning adalah suatu cabang ilmu yang memberi komputer kemampuan untuk belajar tanpa diprogram secara eksplisit.
+
+Pemrograman tradisional memiliki keterbatasan karena ia rigid dengan sekumpulan aturan “if” dan “else” untuk memproses data atau menyesuaikan dengan masukan.
+
+### Tipe-Tipe Machine Learning
+
+#### Supervised Learning
+
+Supervised learning adalah kategori machine learning yang dalam proses pembelajarannya menggunakan data yang memiliki label atau jawaban. Model machine learning, model akan melakukan perhitungan komputasi terhadap input yang diberikan berdasarkan algoritma yang digunakan.
+
+#### Unsupervised Learning
+
+Unsupervised learning, data yang digunakan pada proses pembelajarannya tidak memiliki jawaban atau label. Unsupervised learning akan melakukan proses interpretasi, yaitu menemukan sebuah pola berdasarkan karakteristik dataset yang ada. Tahapan ini dibantu oleh algoritma yang dapat melakukan perhitungan komputasi untuk membantu menemukan pola atau struktur yang ada di dalamnya.
+
+#### Reinforcement Learning
+
+Reinforcement learning adalah teknik yang mempelajari bagaimana membuat keputusan terbaik secara berurutan untuk memaksimalkan ukuran sukses kehidupan nyata. Entitas pembuat keputusan atau yang biasa disebut agent belajar melalui proses trial dan error.
+
+### Machine Learning Workflow
+
+Machine learning workflow memiliki tahapan iteratif yang berarti prosesnya bisa berulang sesuai dengan kebutuhan. Anda dapat mengevaluasi ulang proses yang Anda jalankan dan kembali ke langkah sebelumnya ketika dibutuhkan. Machine learning worfklow umumnya memiliki lima tahapan yang berkesinambungan.
+
+#### Pengumpulan Data
+
+Machine Learning Engineer bertugas untuk membangun model ML, tentu proses pengumpulan datanya tidak semudah mengunduh dataset yang sudah jadi. Anda perlu mengumpulkan dan mengekstrak sendiri data dari berbagai sumber, seperti dari database, file, data sensor, dan sumber lainnya.
+
+Anda juga perlu berurusan dengan berbagai jenis tipe data mulai dari structured data (seperti berkas excel atau basis data SQL), hingga unstructured data (seperti berkas text, email, video, audio, gambar, data sensor, dan lainnya). Seorang analis yang bekerja pada sebuah perusahaan yang melakukan riset dan penasehatan global menyatakan bahwa lebih dari 80% data yang digunakan saat ini adalah unstructured data.
+
+#### Data Preprocessing
+
+Data preprocessing adalah tahapan pengolahan data lebih lanjut sehingga menjadi lebih siap dalam pengembangan model machine learning. Proses ini mengubah fitur-fitur data ke dalam bentuk yang mudah diinterpretasikan dan diproses oleh algoritma machine learning. seperti data cleaning, data transformation, dan data integration.
+
+Beberapa hal yang bisa dilakukan dalam proses data cleaning antara lain
+
+- Penanganan missing value,
+- Data yang tidak konsisten,
+- Duplikasi data,
+- Ketidakseimbangan data,
+- Dan lain sebagainya.
+
+Selain itu, ada juga beberapa hal yang bisa dilakukan untuk proses data transformation seperti
+
+- Scaling atau mengubah skala data agar sesuai dengan skala tertentu. Adapun metode umum yang digunakan ada dua, yaitu:
+
+  - Standarisasi, mengubah data agar memiliki mean = 0 dan standar deviasi = 1. Biasanya digunakan jika data memiliki distribusi normal.
+  - Normalisasi, mengubah data dalam rentang tertentu, biasanya [0,1] atau [-1,1], agar semua fitur memiliki skala yang sama. Cocok untuk data dengan skala yang berbeda atau tidak terdistribusi normal.
+
+- Mengonversi data menjadi format yang seharusnya, sebagai contoh:
+  - Kolom tanggal memiliki format object, kita tukar menjadi format datetime.
+  - Kolom dengan isi data kategorikal tetapi formatnya numeric, kita ganti nilai uniknya menjadi nilai kategorikal dan konversi menjadi Object.
+
+Lalu, bagaimana dengan data integration? Berikut beberapa hal yang bisa dilakukan pada tahap data integration.
+
+- Menggabungkan dataset.
+- Menghilangkan fitur yang duplikat.
+- Menyamakan format.
+- Dan lain sebagainya.
+
+#### Model Development
+
+Pilihan model atau metode yang tidak tepat dapat menyebabkan kesimpulan yang menyesatkan atau performa prediksi yang mengecewakan. Sebagai contoh, saat memiliki kasus klasifikasi biner, kita perlu mempertimbangkan model terbaik untuk data kita, apakah logistic regression atau SVM classifier.
+
+Setelah kita menentukan metode yang cocok untuk data yang ada, kita perlu mengubah hyperparameter untuk mendapatkan performa terbaik dari model. Hyperparameter di sini merupakan variabel yang digunakan untuk mengontrol proses pelatihan model, contohnya seperti epochs, optimizer, dan lain sebagainya.
+
+Mengubah nilai hyperparameter saat kita menjalankan algoritma ML akan memberikan hasil atau performa model yang berbeda. Proses menemukan performa terbaik model dengan pengaturan hyperparameter yang berbeda ini juga disebut model development.
+
+#### Model Evaluation
+
+Proses model evaluation adalah menilai kinerja model ML pada data baru, yaitu data yang belum pernah “dilihat” oleh model sebelumnya. Bertujuan untuk membuat estimasi generalisasi error dari model yang dipilih, yaitu seberapa baik kinerja model tersebut pada data baru.
+
+Langkah evaluasi model dapat dijabarkan sebagai berikut.
+
+- Memprediksi label pada data uji.
+- Menghitung jumlah dari hasil prediksi berdasarkan data uji. Pada tahap ini, kita menghitung keseluruhan kondisi yang ada, seperti jumlah dari kondisi prediksi yang memiliki status benar ataupun salah.
+- Membandingkan hasil prediksi dengan data label yang kita miliki. Dari data perbandingan ini, kita dapat menghitung akurasi atau performa model.
+
+#### Model Deployment
+
+Setelah model dievaluasi, model siap untuk dipakai pada tahap produksi yang biasanya disebut model deployment. Caranya adalah dengan menyimpan model yang telah dilatih dari tahap preprocessing hingga pipeline prediksi. Selanjutnya, jangan lupa untuk membawa seluruh tahapan pada data preprocessing untuk digunakan pada tahapan prediksi. Simpan seluruh tahapan yang dilakukan pada data preprocessing pada sebuah fungsi bernama predict yang berguna untuk memproses data baru. Kemudian, deploy model tersebut ke sebuah platform seperti web, mobile, IoT, dan lain sebagainya. Last but not least, kita dapat membuat prediksi dengan memanggil fungsi predict() yang sebelumnya telah dibuat.
+
+### Model Maintanance
+
+#### Manual Retraining
+
+Teknik pertama adalah melakukan proses pelatihan ulang pada model dari awal sehingga data-data baru yang ditemui di tahap produksi akan digabung dengan data lama. Selanjutnya, model dilatih ulang dari awal menggunakan data lama dan data baru.
+
+#### Continous Learning
+
+Teknik kedua untuk menjaga model kita up-to-date adalah continuous learning yang menggunakan sistem terotomasi dalam pelatihan ulang model. Berikut alur dari continuous learning.
+
+- Menyimpan data-data baru yang ditemui pada tahap produksi. Contohnya, ketika sistem mendapatkan harga emas naik, data harga tersebut akan disimpan di database.
+- Ketika data-data baru yang dikumpulkan cukup, lakukan pengujian akurasi dari model terhadap data baru.
+- Jika akurasi model menurun seiring waktu, gunakan data baru atau kombinasi data lama dan baru untuk melatih dan men-deploy ulang model.
