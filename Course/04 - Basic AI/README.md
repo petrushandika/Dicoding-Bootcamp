@@ -241,3 +241,76 @@ Teknik kedua untuk menjaga model kita up-to-date adalah continuous learning yang
 - Menyimpan data-data baru yang ditemui pada tahap produksi. Contohnya, ketika sistem mendapatkan harga emas naik, data harga tersebut akan disimpan di database.
 - Ketika data-data baru yang dikumpulkan cukup, lakukan pengujian akurasi dari model terhadap data baru.
 - Jika akurasi model menurun seiring waktu, gunakan data baru atau kombinasi data lama dan baru untuk melatih dan men-deploy ulang model.
+
+## Pengenalan Deep Learning
+
+Deep learning adalah bagian dari bidang keilmuan AI yang mengajarkan komputer untuk memproses data yang terinspirasi dari cara kerja otak manusia. Model deep learning dapat mengerjakan tugas yang lebih kompleks dari machine learning. Dengan kompleksitas yang cukup tinggi, model deep learning dapat mengenali gambar, teks, suara, dan data lainnya.
+
+### Mengenal Artificial Neural Network (ANN)
+
+Artificial Neural Network (ANN) atau Jaringan Saraf Tiruan adalah sebuah model machine learning yang terinspirasi dari neuron/saraf yang terdapat pada otak manusia.
+
+#### Cara Kerja Saraf Manusia
+
+Sebuah saraf terdiri dari 3 (tiga) bagian utama, yaitu akson, dendrit, dan badan sel yang di dalamnya terdapat nukleus.
+
+- Nukleus berisi materi genetik dan bertugas mengontrol seluruh aktivitas sel.
+- Akson adalah cabang yang terlihat seperti ekor yang panjang. Ia bertugas untuk mengirimkan pesan dari sel. Panjang akson berkisar antara beberapa kali lebih panjang dari badan sel, bahkan hingga 10 ribu kali lebih panjang dari badan sel.
+- Dendrit adalah cabang-cabang pendek yang terlihat seperti cabang pohon yang tugasnya menerima pesan untuk sel.
+
+#### Cara Kerja Jaringan Saraf Tiruan
+
+Artificial neural network atau jaringan saraf tiruan memiliki komponen dasar bernama perceptron. Frank Rosenblatt dari Cornell Aeronautical Library adalah ilmuwan yang pertama kali menemukan perceptron pada tahun 1957 [8]. Perceptron pada jaringan saraf tiruan terinspirasi dari neuron pada jaringan saraf di otak manusia. Pada jaringan saraf tiruan, perceptron dan neuron merujuk pada hal yang sama.
+
+Sebuah perceptron menerima masukan berupa bilangan numerik. Perceptron kemudian memproses masukan tersebut untuk menghasilkan sebuah keluaran.
+
+#### Computer Vision
+
+Computer vision merupakan bidang yang memungkinkan komputer atau sistem memperoleh informasi dari gambar digital, video, dan input visual lainnya.
+
+#### Natural Language Processing
+
+Natural Language Processing atau NLP merupakan subbidang dari Artificial Intelligence (AI) untuk memproses, menganalisis, memahami, dan menghasilkan bahasa manusia. NLP termasuk bidang keilmuan AI karena pemrosesan bahasa dianggap sebagai bagian dari kecerdasan manusia. Penggunaan bahasa merupakan keterampilan paling menonjol yang membedakan manusia dengan makhluk lainnya.
+
+NLP menghasilkan beberapa informasi sebagai output seperti label, representasi semantik, dan sebagainya. Teknik NLP digunakan di setiap aplikasi cerdas yang melibatkan bahasa alami. Ia merupakan komponen penting dalam berbagai aplikasi perangkat lunak yang kita gunakan dalam kehidupan sehari-hari.
+
+#### Penerapan Natural Language Processing
+
+Pada bidang marketing, salah satu aplikasi NLP yang telah dibahas di materi sebelumnya adalah analisis sentimen untuk social media monitoring. Selain yang telah disebutkan tadi, NLP memiliki peran signifikan pada berbagai produk dan layanan. Salah satu contoh penerapan yang paling populer pada aplikasi NLP adalah mesin pencari.
+
+Salah satu contohnya adalah pada tahap analisis kueri (query analysis). Analisis kueri mengidentifikasi intensi pengguna saat mengetikkan kata kunci pada mesin pencari, kemudian memberikan informasi yang relevan. Misalnya, jika kita mengetik nama seorang tokoh terkenal pada mesin pencari, akan muncul berbagai informasi penting yang relevan dengan tokoh tersebut. Selain itu, juga muncul beberapa berita mengenai tokoh tersebut.
+
+Selain itu, mesin pencari juga memiliki fungsi koreksi dan rekomendasi kueri. Fungsi ini biasanya muncul saat kita mengetikkan ejaan yang salah dalam mesin pencari. Ketika hal tersebut terjadi, mesin menunjukkan koreksi dengan label seperti “menampilkan hasil untuk (ejaan yang dikoreksi)” atau “telusuri (ejaan salah yang kita ketik)”. Fungsi ini tentu memudahkan proses pencarian dan mengoptimalkan pengalaman pengguna.
+
+### Proses di Balik Deep Learning
+
+```python
+import tensorflow as tf
+
+mnist = tf.keras.datasets.fashion_mnist
+(x_train, y_train),(x_test, y_test) = mnist.load_data()
+x_train, x_test = x_train / 255.0, x_test / 255.0
+model = tf.keras.models.Sequential([
+    tf.keras.layers.Flatten(input_shape=(28, 28)),
+    tf.keras.layers.Dense(512, activation=tf.nn.relu),
+    tf.keras.layers.Dense(10, activation=tf.nn.softmax)
+])
+model.compile(optimizer=tf.optimizers.Adam(),
+              loss=’sparse_categorical_crossentropy’,
+              metrics=[‘accuracy’])
+model.fit(x_train, y_train, epochs=10)
+```
+
+Proses pembelajaran ini terjadi melalui 3 tahapan, yaitu input layer, hidden layer, dan output layer. Berikut definisi dari 3 layer utama pada model sequential.
+
+- Input Layer
+
+  Layer yang memiliki parameter ‘input_shape’. input_shape sendiri adalah resolusi dari gambar-gambar pada data latih. Dalam hal ini, sebuah gambar MNIST memiliki resolusi 28x28 pixel sehingga input shape-nya adalah (28, 28). Sebuah layer Flatten pada Keras akan berfungsi untuk meratakan input. Meratakan di sini artinya mengubah gambar yang merupakan matriks 2 dimensi menjadi array 1 dimensi. Pada kasus kita, sebuah gambar MNIST yang merupakan matriks 28x28 elemen, akan diubah menjadi larik/array satu dimensi sebesar 784 elemen.
+
+- Hidden Layer
+
+  Dense layer pada Keras merupakan layer yang dapat dipakai sebagai hidden layer dan output layer pada sebuah MLP (Multilayer Perceptron). Parameter unit merupakan jumlah perceptron pada sebuah layer. Kita dapat menggunakan fungsi aktivasi relu (rectified linear unit) atau fungsi aktivasi lain untuk hidden layer kita.
+
+- Output Layer
+
+  Output layer didefinisikan dengan membuat sebuah dense layer. Jumlah unit menyesuaikan dengan jumlah label pada dataset. Untuk fungsi aktivasi pada layer output, gunakan fungsi aktivasi sigmoid ketika hanya terdapat 2 kelas/label pada dataset. Untuk dataset yang memiliki 3 kelas atau lebih, gunakan fungsi aktivasi softmax. Fungsi aktivasi softmax akan memilih kelas mana yang memiliki probabilitas tertinggi. Untuk data fashion MNIST, kita akan menggunakan fungsi aktivasi softmax karena terdapat 10 kelas.
